@@ -1,0 +1,63 @@
++--------------------------------------------------------------+
+|                        AppCompatActivity                     |
+|--------------------------------------------------------------|
+| (Android SDK base class; methods inherited)                  |
++--------------------------------------------------------------+
+                          ▲
+                          │
+        +-----------------+-----------------+
+        │                                   │
++-------------------------+     +-------------------------+
+|     AddItemActivity     |     |    EditItemActivity     |
+|-------------------------|     |-------------------------|
+| - itemName: String      |     | - itemId: int          |
+| - itemDescription: String|    | - itemName: String     |
+| - status: String        |     | - itemDescription: String |
+| - borrower: String      |     | - status: String       |
+|-------------------------|     | - borrower: String    |
+| + addItem()             |     | + editItem()          |
+| + validateInput()       |     | + updateItem()        |
+| + saveItem()            |     | + deleteItem()        |
++-------------------------+     +-------------------------+
+
+        Inheritance (from AppCompatActivity)
+
++--------------------------------------------------------------+
+|                        ItemList                              |
+|--------------------------------------------------------------|
+| - items: List<Item>                                          |
+| - filterType: String (e.g., "All", "Available", "Borrowed") |
+|--------------------------------------------------------------|
+| + displayItems()                                             |
+| + filterItems()                                              |
++--------------------------------------------------------------+
+
+        Aggregates many Items
+
++--------------------------------------------------------------+
+|                            Item                                |
+|--------------------------------------------------------------|
+| - id: int                                                    |
+| - name: String                                               |
+| - description: String                                        |
+| - status: String ("Available" / "Borrowed")                   |
+| - borrower: String (nullable if available)                     |
+| - dimensions: Dimensions                                       |
+|--------------------------------------------------------------|
+| + toggleStatus()                                             |
+| + setBorrower(borrowerName: String)                            |
+| + getDetails()                                               |
++--------------------------------------------------------------+
+
+        Composition (has Dimensions)
+
++--------------------------------------------------------------+
+|                        Dimensions                            |
+|--------------------------------------------------------------|
+| - length: float                                              |
+| - width: float                                               |
+| - height: float                                              |
+|--------------------------------------------------------------|
+| + getVolume()                                                |
+| + getDimensions()                                            |
++--------------------------------------------------------------+
